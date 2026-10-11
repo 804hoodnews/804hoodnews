@@ -1,0 +1,37 @@
+backend:
+  name: github
+  repo: slaughtarva/804hoodnews-v3
+  branch: main
+  base_url: https://api.netlify.com
+  auth_endpoint: auth
+
+media_folder: public/uploads
+public_folder: /uploads
+publish_mode: simple
+site_url: https://804hoodnews.com
+display_url: https://804hoodnews.com
+logo_url: https://804hoodnews.com/images/804-hood-news-logo.jpg
+
+collections:
+  - name: articles
+    label: News Articles
+    folder: src/content/articles
+    create: true
+    slug: "{{slug}}"
+    extension: md
+    format: frontmatter
+    fields:
+      - { label: Headline, name: title, widget: string }
+      - { label: Summary, name: summary, widget: text }
+      - label: Category
+        name: category
+        widget: select
+        options: [Breaking News, Crime, Traffic, Community, Sports, Weather, Business, Events]
+      - { label: Author, name: author, widget: string, default: "804 Hood News Staff" }
+      - { label: Publish Date, name: date, widget: datetime }
+      - { label: Featured Image, name: image, widget: image, required: false }
+      - { label: Featured Story, name: featured, widget: boolean, default: false }
+      - { label: Sponsored Story, name: sponsored, widget: boolean, default: false }
+      - { label: Sponsor Name, name: sponsor, widget: string, required: false }
+      - { label: Published, name: published, widget: boolean, default: true }
+      - { label: Story, name: body, widget: markdown }
